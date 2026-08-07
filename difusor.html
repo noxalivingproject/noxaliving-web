@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Difusor Premium — NOXALIVING</title>
+  <meta name="description" content="Difusor de aromas ultrasónico premium. Diseño minimalista, luz ambiental cálida, silencioso. Compatible con cualquier aceite esencial NOXALIVING.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* ── DIFUSOR PAGE ── */
+    .product-hero__gallery { background: #f7f7f7; }
+    .product-hero__gallery img { padding: 32px 20px; }
+
+    .thumb-row {
+      display: flex; gap: 8px; padding: 12px 24px 0;
+      overflow-x: auto; scrollbar-width: none;
+    }
+    .thumb-row::-webkit-scrollbar { display: none; }
+    .thumb {
+      width: 64px; height: 64px; border-radius: 8px; overflow: hidden;
+      border: 2px solid transparent; cursor: pointer; flex-shrink: 0;
+      background: var(--gray-200); transition: border-color var(--trans);
+    }
+    .thumb.active { border-color: var(--teal); }
+    .thumb img { width: 100%; height: 100%; object-fit: contain; padding: 4px; }
+
+    /* Hero dark version */
+    .hero-banner {
+      background: var(--black); min-height: 420px;
+      display: flex; align-items: flex-end;
+      position: relative; overflow: hidden;
+    }
+    .hero-banner video, .hero-banner img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%; object-fit: cover; opacity: 0.65;
+    }
+    .hero-banner__content {
+      position: relative; padding: 48px 24px; color: var(--white);
+      background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 100%);
+      width: 100%;
+    }
+    .hero-banner__title { font-size: clamp(32px,8vw,60px); font-weight: 900; letter-spacing: -0.02em; margin-bottom: 8px; }
+    .hero-banner__desc  { font-size: 15px; color: rgba(255,255,255,0.6); max-width: 400px; line-height: 1.6; margin-bottom: 24px; }
+    .hero-banner__cta   { display: flex; gap: 12px; flex-wrap: wrap; }
+
+    /* Detail blocks */
+    .detail-section { display: grid; grid-template-columns: 1fr; }
+    .detail-block {
+      padding: 52px 24px; display: flex; flex-direction: column; justify-content: center;
+    }
+    .detail-block__icon {
+      width: 52px; height: 52px; border-radius: 14px; background: var(--gray-200);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 20px; color: var(--gray-600);
+    }
+    .detail-block__icon svg { width: 28px; height: 28px; }
+    .detail-block__title { font-size: 22px; font-weight: 800; margin-bottom: 10px; letter-spacing: -0.01em; }
+    .detail-block__desc  { font-size: 14px; color: var(--gray-600); line-height: 1.7; }
+    .detail-image { min-height: 320px; overflow: hidden; }
+    .detail-image img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+
+    /* Specs */
+    .specs-section { padding: 64px 24px; background: var(--gray-100); }
+    .specs-title { font-size: 22px; font-weight: 800; margin-bottom: 24px; }
+    .specs-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    .specs-table tr { border-bottom: 1px solid var(--gray-200); }
+    .specs-table tr:last-child { border-bottom: none; }
+    .specs-table td { padding: 14px 0; vertical-align: top; }
+    .specs-table td:first-child { color: var(--gray-600); width: 45%; }
+    .specs-table td:last-child  { font-weight: 600; }
+
+    .related { padding: 64px 24px; }
+    .related__title { font-size: 20px; font-weight: 800; margin-bottom: 24px; }
+
+    @media (min-width: 768px) {
+      .detail-section { grid-template-columns: 1fr 1fr; }
+      .detail-section--reverse .detail-image { order: -1; }
+      .detail-image { min-height: 440px; }
+      .detail-block { padding: 72px 56px; }
+      .specs-section { padding: 80px 40px; }
+      .related { padding: 80px 40px; }
+      .hero-banner { min-height: 560px; }
+      .hero-banner__content { padding: 60px 40px; }
+    }
+    @media (min-width: 1024px) {
+      .detail-block { padding: 80px 80px; }
+      .specs-section { padding: 100px 80px; }
+      .related { padding: 100px 80px; }
+      .hero-banner__content { padding: 80px 80px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header" id="header">
+  <a href="index.html" class="header__logo">NOXALIVING</a>
+  <nav class="header__nav">
+    <a href="dispensador.html"    class="header__nav-link">Dispensador</a>
+    <a href="difusor.html"        class="header__nav-link active">Difusor</a>
+    <a href="aceites.html"        class="header__nav-link">Aceites</a>
+    <a href="index.html#nosotros" class="header__nav-link">Nosotros</a>
+  </nav>
+  <div class="header__actions">
+    <button class="header__btn" aria-label="Buscar">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    </button>
+    <button class="header__btn" aria-label="Carrito">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+    </button>
+    <button class="header__btn header__menu-btn" id="menuBtn" aria-label="Menú">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+</header>
+
+<div class="menu-overlay" id="menuOverlay"></div>
+<aside class="menu-drawer" id="menuDrawer">
+  <div class="menu-drawer__header">
+    <span class="menu-drawer__brand">NOXALIVING</span>
+    <button class="menu-drawer__close" id="menuClose" aria-label="Cerrar">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+  </div>
+  <nav class="menu-drawer__nav">
+    <a href="dispensador.html"    class="menu-drawer__link">Dispensador</a>
+    <a href="difusor.html"        class="menu-drawer__link">Difusor</a>
+    <a href="aceites.html"        class="menu-drawer__link">Aceites</a>
+    <a href="index.html#nosotros" class="menu-drawer__link">Nosotros</a>
+  </nav>
+  <div class="menu-drawer__footer">
+    <a href="#" class="menu-drawer__footer-link">Mi Cuenta</a>
+    <a href="#" class="menu-drawer__footer-link">Soporte</a>
+  </div>
+</aside>
+
+<div class="page">
+
+  <!-- BREADCRUMB -->
+  <nav class="breadcrumb">
+    <a href="index.html">Inicio</a>
+    <span class="breadcrumb__sep">›</span>
+    <span class="breadcrumb__current">Difusor Premium</span>
+  </nav>
+
+  <!-- PRODUCT HERO -->
+  <section class="product-hero" id="comprar">
+    <div class="product-hero__gallery">
+      <img id="mainImg" src="ChatGPT%20Image%205%20ago%202026%2C%2015_15_31.png" alt="Difusor Premium NOXALIVING">
+      <div class="thumb-row">
+        <div class="thumb active" onclick="setImg('ChatGPT%20Image%205%20ago%202026%2C%2015_15_31.png', this)">
+          <img src="ChatGPT%20Image%205%20ago%202026%2C%2015_15_31.png" alt="">
+        </div>
+        <div class="thumb" onclick="setImg('ChatGPT%20Image%205%20ago%202026%2C%2015_20_55.png', this)">
+          <img src="ChatGPT%20Image%205%20ago%202026%2C%2015_20_55.png" alt="">
+        </div>
+        <div class="thumb" onclick="setImg('ChatGPT%20Image%204%20ago%202026%2C%2020_27_16.png', this)">
+          <img src="ChatGPT%20Image%204%20ago%202026%2C%2020_27_16.png" alt="">
+        </div>
+      </div>
+    </div>
+    <div class="product-hero__info">
+      <span class="product-hero__tag">Difusor · Aromaterapia</span>
+      <h1 class="product-hero__name">Difusor de Aromas Premium</h1>
+      <p class="product-hero__desc">Ultrasónico, silencioso y elegante. Transforma cualquier ambiente en segundos. Diseño minimalista premium con luz ambiental cálida integrada y programación de timer.</p>
+
+      <div class="product-hero__price">
+        Próximamente <small>— Precio por confirmar</small>
+      </div>
+
+      <div class="product-hero__cta">
+        <a href="index.html#newsletter" class="btn btn--teal" style="flex:1;max-width:240px;">Notificarme</a>
+        <a href="aceites.html" class="btn btn--outline-dark">Ver Aceites</a>
+      </div>
+
+      <div class="product-hero__specs">
+        <div class="product-hero__spec-row">
+          <span class="product-hero__spec-label">Tecnología</span>
+          <span class="product-hero__spec-value">Ultrasónica</span>
+        </div>
+        <div class="product-hero__spec-row">
+          <span class="product-hero__spec-label">Niveles de niebla</span>
+          <span class="product-hero__spec-value">Alto / Bajo</span>
+        </div>
+        <div class="product-hero__spec-row">
+          <span class="product-hero__spec-label">Luz ambiental</span>
+          <span class="product-hero__spec-value">LED cálido regulable</span>
+        </div>
+        <div class="product-hero__spec-row">
+          <span class="product-hero__spec-label">Timer</span>
+          <span class="product-hero__spec-value">Programable</span>
+        </div>
+        <div class="product-hero__spec-row">
+          <span class="product-hero__spec-label">Ruido</span>
+          <span class="product-hero__spec-value">&lt; 35 dB (silencioso)</span>
+        </div>
+        <div class="product-hero__spec-row">
+          <span class="product-hero__spec-label">Compatible con</span>
+          <span class="product-hero__spec-value">Aceites esenciales NOXALIVING</span>
+        </div>
+        <div class="product-hero__spec-row">
+          <span class="product-hero__spec-label">Diseños disponibles</span>
+          <span class="product-hero__spec-value">Blanco Stone · Negro</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HERO VIDEO BANNER -->
+  <section class="hero-banner">
+    <video src="difusor%209.16.mp4" autoplay muted loop playsinline></video>
+    <div class="hero-banner__content">
+      <h2 class="hero-banner__title">Respira<br>diferente.</h2>
+      <p class="hero-banner__desc">La tecnología ultrasónica convierte tus aceites esenciales en una niebla fría aromática que llena el ambiente en segundos.</p>
+      <div class="hero-banner__cta">
+        <a href="aceites.html" class="btn btn--white">Ver Aceites</a>
+        <a href="index.html#newsletter" class="btn btn--outline-white">Notificarme</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURE: DISEÑO -->
+  <section class="detail-section">
+    <div class="detail-block">
+      <div class="detail-block__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+      </div>
+      <h2 class="detail-block__title">Dos estilos, un mismo lujo</h2>
+      <p class="detail-block__desc">Disponible en Blanco Stone —textura premium inspirada en el mármol— y Negro mate con anillo LED teal. Elegí el que mejor combina con tu espacio.</p>
+    </div>
+    <div class="detail-image" style="background:#f7f7f7;">
+      <img src="ChatGPT%20Image%205%20ago%202026%2C%2015_20_55.png" alt="Difusor Blanco Stone NOXALIVING" loading="lazy" style="object-fit:contain;padding:40px;">
+    </div>
+  </section>
+
+  <!-- FEATURE: SENSOR/LED -->
+  <section class="detail-section detail-section--reverse" style="background:var(--black);">
+    <div class="detail-block" style="background:var(--black);color:var(--white);">
+      <div class="detail-block__icon" style="background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.6);">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+      </div>
+      <h2 class="detail-block__title" style="color:var(--white);">Luz que crea ambiente</h2>
+      <p class="detail-block__desc" style="color:rgba(255,255,255,0.55);">El anillo LED teal del modelo negro genera una atmósfera única. El modelo blanco incluye luz ambiental cálida en la base. Regulables desde el panel táctil.</p>
+    </div>
+    <div class="detail-image" style="background:#111;">
+      <img src="ChatGPT%20Image%204%20ago%202026%2C%2020_27_16.png" alt="Difusor Negro NOXALIVING con LED teal" loading="lazy">
+    </div>
+  </section>
+
+  <!-- FEATURE: SILENCIOSO -->
+  <section class="detail-section">
+    <div class="detail-block">
+      <div class="detail-block__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+      </div>
+      <h2 class="detail-block__title">Silencio total, aromas totales</h2>
+      <p class="detail-block__desc">Con menos de 35 dB de operación, el difusor NOXALIVING es prácticamente inaudible. Perfecto para el dormitorio, la oficina o el living.</p>
+    </div>
+    <div class="detail-image" style="background:#f0f0f0;">
+      <img src="ChatGPT%20Image%204%20ago%202026%2C%2020_37_56.png" alt="Difusor NOXALIVING en ambiente" loading="lazy">
+    </div>
+  </section>
+
+  <!-- SPECS TABLE -->
+  <div class="specs-section">
+    <h2 class="specs-title">Especificaciones</h2>
+    <table class="specs-table">
+      <tr><td>Tecnología</td><td>Ultrasónica (niebla fría)</td></tr>
+      <tr><td>Niveles de niebla</td><td>2 niveles (alto / bajo)</td></tr>
+      <tr><td>Luz ambiental</td><td>LED regulable</td></tr>
+      <tr><td>Timer</td><td>Programable (1h / 3h / 6h / continuo)</td></tr>
+      <tr><td>Nivel de ruido</td><td>&lt; 35 dB</td></tr>
+      <tr><td>Capacidad del depósito</td><td>Por confirmar</td></tr>
+      <tr><td>Cobertura</td><td>Hasta 30 m²</td></tr>
+      <tr><td>Diseños</td><td>Blanco Stone · Negro</td></tr>
+      <tr><td>Compatible con</td><td>Aceites esenciales base agua</td></tr>
+      <tr><td>Garantía</td><td>Por confirmar</td></tr>
+    </table>
+  </div>
+
+  <!-- RELATED -->
+  <div class="related">
+    <h2 class="related__title">Completá la experiencia</h2>
+    <div class="products-grid">
+      <div class="product-card">
+        <div class="product-card__info">
+          <div class="product-card__name">Aceite Esencial Lavanda</div>
+          <div class="product-card__links">
+            <a href="aceites.html" class="product-card__link">Conocer</a>
+            <a href="aceites.html#comprar" class="product-card__link product-card__link--buy">Comprar</a>
+          </div>
+        </div>
+        <img class="product-card__img" src="ChatGPT%20Image%205%20ago%202026%2C%2015_31_03.png" alt="Aceite Esencial Lavanda">
+      </div>
+      <div class="product-card">
+        <div class="product-card__info">
+          <div class="product-card__name">Dispensador P25</div>
+          <div class="product-card__links">
+            <a href="dispensador.html" class="product-card__link">Conocer</a>
+            <a href="dispensador.html#comprar" class="product-card__link product-card__link--buy">Comprar</a>
+          </div>
+        </div>
+        <img class="product-card__img" src="product-cutout.png" alt="Dispensador P25">
+      </div>
+    </div>
+  </div>
+
+  <!-- NEWSLETTER -->
+  <section class="newsletter">
+    <h2 class="newsletter__title">Sé el primero<br>en recibirlo.</h2>
+    <p class="newsletter__sub">Avisanos tu correo y te notificamos cuando esté disponible.</p>
+    <form class="newsletter__form" id="nlForm">
+      <input class="newsletter__input" type="email" placeholder="Correo electrónico" required>
+      <input class="newsletter__input" type="tel" placeholder="WhatsApp (opcional)">
+      <button class="newsletter__submit" type="submit" id="nlBtn">Notificarme</button>
+    </form>
+    <p class="newsletter__legal">Al suscribirte aceptás recibir comunicaciones de NOXALIVING®.</p>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer__logo">NOXALIVING</div>
+    <div class="footer__social">
+      <a href="#" class="footer__social-link" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke-width="2"/></svg></a>
+      <a href="#" class="footer__social-link" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.7a8.27 8.27 0 004.84 1.55V6.81a4.85 4.85 0 01-1.07-.12z"/></svg></a>
+      <a href="#" class="footer__social-link" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+    </div>
+    <div class="footer__cols">
+      <div>
+        <div class="footer__col-title">Soporte</div>
+        <ul class="footer__links">
+          <li><a href="#" class="footer__link">Mi Cuenta</a></li>
+          <li><a href="#" class="footer__link">Devoluciones</a></li>
+          <li><a href="#" class="footer__link">Contáctanos</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer__col-title">Empresa</div>
+        <ul class="footer__links">
+          <li><a href="index.html#nosotros" class="footer__link">Nosotros</a></li>
+          <li><a href="#" class="footer__link">Garantía</a></li>
+          <li><a href="#" class="footer__link">Privacidad</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer__col-title">Productos</div>
+        <ul class="footer__links">
+          <li><a href="dispensador.html" class="footer__link">Dispensador P25</a></li>
+          <li><a href="difusor.html"     class="footer__link">Difusor Premium</a></li>
+          <li><a href="aceites.html"     class="footer__link">Aceites Esenciales</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p class="footer__copy">© 2026 NOXALIVING®. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+  const menuBtn = document.getElementById('menuBtn');
+  const menuClose = document.getElementById('menuClose');
+  const menuOverlay = document.getElementById('menuOverlay');
+  const menuDrawer = document.getElementById('menuDrawer');
+  menuBtn.addEventListener('click', () => { menuDrawer.classList.add('open'); menuOverlay.classList.add('open'); document.body.style.overflow = 'hidden'; });
+  [menuClose, menuOverlay].forEach(el => el.addEventListener('click', () => { menuDrawer.classList.remove('open'); menuOverlay.classList.remove('open'); document.body.style.overflow = ''; }));
+  window.addEventListener('scroll', () => document.getElementById('header').classList.toggle('scrolled', window.scrollY > 8), { passive: true });
+  function setImg(src, el) {
+    document.getElementById('mainImg').src = src;
+    document.querySelectorAll('.thumb').forEach(t => t.classList.remove('active'));
+    el.classList.add('active');
+  }
+  document.getElementById('nlForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const btn = document.getElementById('nlBtn');
+    btn.textContent = '¡Listo! ✓'; btn.classList.add('done');
+    setTimeout(() => { btn.textContent = 'Notificarme'; btn.classList.remove('done'); this.reset(); }, 3500);
+  });
+</script>
+</body>
+</html>

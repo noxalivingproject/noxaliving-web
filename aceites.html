@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aceites Esenciales — NOXALIVING</title>
+  <meta name="description" content="Aceites esenciales 100% puros NOXALIVING. Lavanda, eucalipto y más. Formulados para el difusor premium NOXALIVING. 120ml en frasco de vidrio ámbar premium.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* ── ACEITES PAGE ── */
+
+    /* Hero banner warm */
+    .oils-hero {
+      background: #f5f0ea;
+      min-height: calc(100svh - var(--header-h));
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center; padding: 60px 24px 48px;
+      position: relative; overflow: hidden;
+    }
+    .oils-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 70% 50% at 50% 100%, rgba(139,115,85,0.12) 0%, transparent 70%);
+    }
+    .oils-hero__tag {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.16em;
+      text-transform: uppercase; color: var(--warm); margin-bottom: 20px; position: relative;
+    }
+    .oils-hero__title {
+      font-size: clamp(40px,10vw,80px); font-weight: 900; color: var(--dark);
+      line-height: 1.0; margin-bottom: 20px; letter-spacing: -0.03em; position: relative;
+    }
+    .oils-hero__subtitle {
+      font-size: 16px; color: var(--gray-600); margin-bottom: 36px;
+      max-width: 380px; line-height: 1.65; position: relative;
+    }
+    .oils-hero__actions {
+      display: flex; gap: 12px; flex-wrap: wrap; justify-content: center;
+      margin-bottom: 52px; position: relative;
+    }
+    .oils-hero__image {
+      width: min(200px, 50vw); object-fit: contain; position: relative;
+      filter: drop-shadow(0 24px 48px rgba(139,115,85,0.2));
+      animation: float 5s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%,100% { transform: translateY(0); }
+      50%      { transform: translateY(-12px); }
+    }
+
+    /* Oil catalog grid */
+    .oils-catalog { padding: 64px 24px; }
+    .oils-catalog__title { font-size: clamp(24px,6vw,36px); font-weight: 800; margin-bottom: 8px; }
+    .oils-catalog__sub   { font-size: 15px; color: var(--gray-600); margin-bottom: 36px; }
+
+    .oils-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px;
+    }
+
+    .oil-card {
+      background: var(--gray-100); border-radius: var(--radius);
+      overflow: hidden; transition: transform var(--trans), box-shadow var(--trans);
+      cursor: pointer;
+    }
+    .oil-card:hover { transform: translateY(-3px); box-shadow: 0 8px 32px rgba(0,0,0,0.10); }
+
+    .oil-card__img-wrap {
+      background: #f0ece8; padding: 28px 20px 16px;
+      display: flex; align-items: center; justify-content: center;
+      min-height: 200px;
+    }
+    .oil-card__img { width: 100px; height: 140px; object-fit: contain; }
+
+    .oil-card__info { padding: 16px; }
+    .oil-card__name { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
+    .oil-card__size { font-size: 12px; color: var(--gray-400); margin-bottom: 12px; }
+    .oil-card__links { display: flex; gap: 14px; }
+    .oil-card__link {
+      font-size: 12px; font-weight: 500;
+      text-decoration: underline; text-underline-offset: 3px; color: var(--dark);
+      transition: color var(--trans);
+    }
+    .oil-card__link:hover  { color: var(--teal); }
+    .oil-card__link--buy   { color: var(--warm); }
+
+    /* Coming soon badge */
+    .badge-soon {
+      display: inline-block;
+      background: var(--gray-200); color: var(--gray-600);
+      font-size: 10px; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; padding: 3px 8px; border-radius: 4px; margin-bottom: 8px;
+    }
+
+    /* Benefits section */
+    .benefits { padding: 64px 24px; background: #f5f0ea; }
+    .benefits__title { font-size: clamp(24px,6vw,36px); font-weight: 800; margin-bottom: 32px; }
+    .benefits-grid {
+      display: grid; grid-template-columns: 1fr; gap: 24px;
+    }
+    .benefit-item {
+      display: flex; gap: 16px; align-items: flex-start;
+    }
+    .benefit-item__icon {
+      width: 44px; height: 44px; background: rgba(139,115,85,0.12); border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; color: var(--warm);
+    }
+    .benefit-item__icon svg { width: 22px; height: 22px; }
+    .benefit-item__title { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
+    .benefit-item__desc  { font-size: 13px; color: var(--gray-600); line-height: 1.6; }
+
+    /* Pairing section */
+    .pairing { padding: 64px 24px; text-align: center; }
+    .pairing__title { font-size: clamp(24px,6vw,36px); font-weight: 800; margin-bottom: 12px; }
+    .pairing__desc  { font-size: 15px; color: var(--gray-600); max-width: 440px; margin: 0 auto 32px; line-height: 1.65; }
+
+    .related { padding: 0 24px 64px; }
+    .related__title { font-size: 20px; font-weight: 800; margin-bottom: 24px; }
+
+    @media (min-width: 480px) {
+      .oils-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (min-width: 768px) {
+      .oils-catalog { padding: 80px 40px; }
+      .oils-grid { grid-template-columns: repeat(3, 1fr); gap: 20px; }
+      .oil-card__img-wrap { min-height: 240px; }
+      .oil-card__img { width: 120px; height: 168px; }
+      .benefits { padding: 80px 40px; }
+      .benefits-grid { grid-template-columns: repeat(2, 1fr); gap: 32px; }
+      .pairing { padding: 80px 40px; }
+      .related { padding: 0 40px 80px; }
+    }
+    @media (min-width: 1024px) {
+      .oils-catalog { padding: 100px 80px; }
+      .oils-grid { grid-template-columns: repeat(4, 1fr); }
+      .benefits { padding: 100px 80px; }
+      .benefits-grid { grid-template-columns: repeat(4, 1fr); }
+      .pairing { padding: 100px 80px; }
+      .related { padding: 0 80px 100px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header" id="header">
+  <a href="index.html" class="header__logo">NOXALIVING</a>
+  <nav class="header__nav">
+    <a href="dispensador.html"    class="header__nav-link">Dispensador</a>
+    <a href="difusor.html"        class="header__nav-link">Difusor</a>
+    <a href="aceites.html"        class="header__nav-link active">Aceites</a>
+    <a href="index.html#nosotros" class="header__nav-link">Nosotros</a>
+  </nav>
+  <div class="header__actions">
+    <button class="header__btn" aria-label="Buscar">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    </button>
+    <button class="header__btn" aria-label="Carrito">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+    </button>
+    <button class="header__btn header__menu-btn" id="menuBtn" aria-label="Menú">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+</header>
+
+<div class="menu-overlay" id="menuOverlay"></div>
+<aside class="menu-drawer" id="menuDrawer">
+  <div class="menu-drawer__header">
+    <span class="menu-drawer__brand">NOXALIVING</span>
+    <button class="menu-drawer__close" id="menuClose" aria-label="Cerrar">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+  </div>
+  <nav class="menu-drawer__nav">
+    <a href="dispensador.html"    class="menu-drawer__link">Dispensador</a>
+    <a href="difusor.html"        class="menu-drawer__link">Difusor</a>
+    <a href="aceites.html"        class="menu-drawer__link">Aceites</a>
+    <a href="index.html#nosotros" class="menu-drawer__link">Nosotros</a>
+  </nav>
+  <div class="menu-drawer__footer">
+    <a href="#" class="menu-drawer__footer-link">Mi Cuenta</a>
+    <a href="#" class="menu-drawer__footer-link">Soporte</a>
+  </div>
+</aside>
+
+<div class="page">
+
+  <!-- BREADCRUMB -->
+  <nav class="breadcrumb">
+    <a href="index.html">Inicio</a>
+    <span class="breadcrumb__sep">›</span>
+    <span class="breadcrumb__current">Aceites Esenciales</span>
+  </nav>
+
+  <!-- HERO -->
+  <section class="oils-hero">
+    <span class="oils-hero__tag">Aromaterapia · 100% Natural</span>
+    <h1 class="oils-hero__title">Aceites<br>Esenciales.</h1>
+    <p class="oils-hero__subtitle">Formulados para complementar tu difusor NOXALIVING. Sin aditivos, sin conservantes. Solo naturaleza pura.</p>
+    <div class="oils-hero__actions">
+      <a href="#catalogo" class="btn btn--dark">Ver colección</a>
+      <a href="difusor.html" class="btn btn--outline-dark">Ver Difusor</a>
+    </div>
+    <img class="oils-hero__image" src="ChatGPT%20Image%205%20ago%202026%2C%2015_31_03.png" alt="Aceite Esencial Lavanda NOXALIVING" loading="eager">
+  </section>
+
+  <!-- CATALOG -->
+  <section class="oils-catalog" id="catalogo comprar">
+    <h2 class="oils-catalog__title">Colección de Aromas</h2>
+    <p class="oils-catalog__sub">Cada aceite seleccionado para una experiencia sensorial única.</p>
+    <div class="oils-grid">
+
+      <!-- Lavanda -->
+      <div class="oil-card">
+        <div class="oil-card__img-wrap">
+          <img class="oil-card__img" src="ChatGPT%20Image%205%20ago%202026%2C%2015_31_03.png" alt="Aceite Esencial Lavanda">
+        </div>
+        <div class="oil-card__info">
+          <div class="oil-card__name">Lavanda</div>
+          <div class="oil-card__size">120 ml · 4.05 fl.oz</div>
+          <div class="oil-card__links">
+            <a href="#" class="oil-card__link">Conocer</a>
+            <a href="index.html#newsletter" class="oil-card__link oil-card__link--buy">Notificarme</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Eucalipto (próximamente) -->
+      <div class="oil-card">
+        <div class="oil-card__img-wrap" style="opacity:0.5;">
+          <img class="oil-card__img" src="ChatGPT%20Image%205%20ago%202026%2C%2015_31_03.png" alt="Aceite Esencial Eucalipto" style="filter:hue-rotate(120deg) saturate(0.6);">
+        </div>
+        <div class="oil-card__info">
+          <span class="badge-soon">Próximamente</span>
+          <div class="oil-card__name">Eucalipto</div>
+          <div class="oil-card__size">120 ml · 4.05 fl.oz</div>
+          <div class="oil-card__links">
+            <a href="index.html#newsletter" class="oil-card__link oil-card__link--buy">Notificarme</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Menta (próximamente) -->
+      <div class="oil-card">
+        <div class="oil-card__img-wrap" style="opacity:0.5;">
+          <img class="oil-card__img" src="ChatGPT%20Image%205%20ago%202026%2C%2015_31_03.png" alt="Aceite Esencial Menta" style="filter:hue-rotate(160deg) saturate(0.7);">
+        </div>
+        <div class="oil-card__info">
+          <span class="badge-soon">Próximamente</span>
+          <div class="oil-card__name">Menta</div>
+          <div class="oil-card__size">120 ml · 4.05 fl.oz</div>
+          <div class="oil-card__links">
+            <a href="index.html#newsletter" class="oil-card__link oil-card__link--buy">Notificarme</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Naranja (próximamente) -->
+      <div class="oil-card">
+        <div class="oil-card__img-wrap" style="opacity:0.5;">
+          <img class="oil-card__img" src="ChatGPT%20Image%205%20ago%202026%2C%2015_31_03.png" alt="Aceite Esencial Naranja" style="filter:hue-rotate(20deg) saturate(0.8);">
+        </div>
+        <div class="oil-card__info">
+          <span class="badge-soon">Próximamente</span>
+          <div class="oil-card__name">Naranja Dulce</div>
+          <div class="oil-card__size">120 ml · 4.05 fl.oz</div>
+          <div class="oil-card__links">
+            <a href="index.html#newsletter" class="oil-card__link oil-card__link--buy">Notificarme</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- BENEFITS -->
+  <section class="benefits">
+    <h2 class="benefits__title">100% natural, sin compromisos</h2>
+    <div class="benefits-grid">
+      <div class="benefit-item">
+        <div class="benefit-item__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div>
+          <div class="benefit-item__title">100% Puro</div>
+          <div class="benefit-item__desc">Sin aditivos, sin diluyentes, sin conservantes. Solo el aceite esencial en su forma más natural.</div>
+        </div>
+      </div>
+      <div class="benefit-item">
+        <div class="benefit-item__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+        </div>
+        <div>
+          <div class="benefit-item__title">Empaque Premium</div>
+          <div class="benefit-item__desc">Frasco de vidrio ámbar que protege el aceite de la luz UV, con tapa de acero inoxidable. Diseño NOXALIVING.</div>
+        </div>
+      </div>
+      <div class="benefit-item">
+        <div class="benefit-item__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2a10 10 0 110 20A10 10 0 0112 2zm0 0v10l6 3"/></svg>
+        </div>
+        <div>
+          <div class="benefit-item__title">Larga Duración</div>
+          <div class="benefit-item__desc">120ml de aceite por frasco. Con uso regular en el difusor, dura semanas de aromaterapia continua.</div>
+        </div>
+      </div>
+      <div class="benefit-item">
+        <div class="benefit-item__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22V12m0 0l-4-4m4 4l4-4M4 6h16"/></svg>
+        </div>
+        <div>
+          <div class="benefit-item__title">Compatible</div>
+          <div class="benefit-item__desc">Optimizados para el Difusor Premium NOXALIVING. Compatibles con cualquier difusor ultrasónico base agua.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAIRING -->
+  <section class="pairing">
+    <h2 class="pairing__title">Mejor juntos</h2>
+    <p class="pairing__desc">Los aceites esenciales NOXALIVING están formulados para funcionar en perfecta armonía con el Difusor Premium. Una experiencia de aromaterapia completa.</p>
+    <div class="related">
+      <div class="products-grid">
+        <div class="product-card">
+          <div class="product-card__info">
+            <div class="product-card__name">Difusor Premium</div>
+            <div class="product-card__links">
+              <a href="difusor.html" class="product-card__link">Conocer</a>
+              <a href="difusor.html#comprar" class="product-card__link product-card__link--buy">Comprar</a>
+            </div>
+          </div>
+          <img class="product-card__img" src="ChatGPT%20Image%205%20ago%202026%2C%2015_20_55.png" alt="Difusor Premium NOXALIVING">
+        </div>
+        <div class="product-card">
+          <div class="product-card__info">
+            <div class="product-card__name">Dispensador P25</div>
+            <div class="product-card__links">
+              <a href="dispensador.html" class="product-card__link">Conocer</a>
+              <a href="dispensador.html#comprar" class="product-card__link product-card__link--buy">Comprar</a>
+            </div>
+          </div>
+          <img class="product-card__img" src="product-cutout.png" alt="Dispensador P25">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER -->
+  <section class="newsletter">
+    <h2 class="newsletter__title">Sé el primero<br>en recibirlos.</h2>
+    <p class="newsletter__sub">Te avisamos cuando los aceites estén disponibles. Dejanos tu correo.</p>
+    <form class="newsletter__form" id="nlForm">
+      <input class="newsletter__input" type="email" placeholder="Correo electrónico" required>
+      <input class="newsletter__input" type="tel" placeholder="WhatsApp (opcional)">
+      <button class="newsletter__submit" type="submit" id="nlBtn">Notificarme</button>
+    </form>
+    <p class="newsletter__legal">Al suscribirte aceptás recibir comunicaciones de NOXALIVING®.</p>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer__logo">NOXALIVING</div>
+    <div class="footer__social">
+      <a href="#" class="footer__social-link" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke-width="2"/></svg></a>
+      <a href="#" class="footer__social-link" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.7a8.27 8.27 0 004.84 1.55V6.81a4.85 4.85 0 01-1.07-.12z"/></svg></a>
+      <a href="#" class="footer__social-link" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+    </div>
+    <div class="footer__cols">
+      <div>
+        <div class="footer__col-title">Soporte</div>
+        <ul class="footer__links">
+          <li><a href="#" class="footer__link">Mi Cuenta</a></li>
+          <li><a href="#" class="footer__link">Devoluciones</a></li>
+          <li><a href="#" class="footer__link">Contáctanos</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer__col-title">Empresa</div>
+        <ul class="footer__links">
+          <li><a href="index.html#nosotros" class="footer__link">Nosotros</a></li>
+          <li><a href="#" class="footer__link">Garantía</a></li>
+          <li><a href="#" class="footer__link">Privacidad</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer__col-title">Productos</div>
+        <ul class="footer__links">
+          <li><a href="dispensador.html" class="footer__link">Dispensador P25</a></li>
+          <li><a href="difusor.html"     class="footer__link">Difusor Premium</a></li>
+          <li><a href="aceites.html"     class="footer__link">Aceites Esenciales</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p class="footer__copy">© 2026 NOXALIVING®. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+  const menuBtn = document.getElementById('menuBtn');
+  const menuClose = document.getElementById('menuClose');
+  const menuOverlay = document.getElementById('menuOverlay');
+  const menuDrawer = document.getElementById('menuDrawer');
+  menuBtn.addEventListener('click', () => { menuDrawer.classList.add('open'); menuOverlay.classList.add('open'); document.body.style.overflow = 'hidden'; });
+  [menuClose, menuOverlay].forEach(el => el.addEventListener('click', () => { menuDrawer.classList.remove('open'); menuOverlay.classList.remove('open'); document.body.style.overflow = ''; }));
+  window.addEventListener('scroll', () => document.getElementById('header').classList.toggle('scrolled', window.scrollY > 8), { passive: true });
+  document.getElementById('nlForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const btn = document.getElementById('nlBtn');
+    btn.textContent = '¡Listo! ✓'; btn.classList.add('done');
+    setTimeout(() => { btn.textContent = 'Notificarme'; btn.classList.remove('done'); this.reset(); }, 3500);
+  });
+</script>
+</body>
+</html>

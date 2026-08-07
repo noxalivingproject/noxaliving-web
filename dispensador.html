@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dispensador Automático P25 — NOXALIVING</title>
+  <meta name="description" content="Dispensador automático de jabón sin contacto. Sensor infrarrojo, acero inoxidable, USB-C recargable, resistente al agua IPX4.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* ── DISPENSADOR PAGE ── */
+    .product-hero__gallery {
+      background: #f0f0f0;
+    }
+    .product-hero__gallery img {
+      padding: 32px 20px;
+    }
+
+    /* Thumbnails */
+    .thumb-row {
+      display: flex; gap: 8px; padding: 12px 24px 0;
+      overflow-x: auto; scrollbar-width: none;
+    }
+    .thumb-row::-webkit-scrollbar { display: none; }
+    .thumb {
+      width: 64px; height: 64px; border-radius: 8px; overflow: hidden;
+      border: 2px solid transparent; cursor: pointer; flex-shrink: 0;
+      background: var(--gray-200); transition: border-color var(--trans);
+    }
+    .thumb.active { border-color: var(--teal); }
+    .thumb img { width: 100%; height: 100%; object-fit: contain; padding: 4px; }
+
+    /* Detail Feature Sections */
+    .detail-section {
+      display: grid; grid-template-columns: 1fr; gap: 0;
+    }
+    .detail-block {
+      padding: 52px 24px;
+      display: flex; flex-direction: column; justify-content: center;
+    }
+    .detail-block__icon {
+      width: 52px; height: 52px; border-radius: 14px; background: var(--gray-200);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 20px; color: var(--gray-600);
+    }
+    .detail-block__icon svg { width: 28px; height: 28px; }
+    .detail-block__title { font-size: 22px; font-weight: 800; margin-bottom: 10px; letter-spacing: -0.01em; }
+    .detail-block__desc  { font-size: 14px; color: var(--gray-600); line-height: 1.7; }
+
+    .detail-image {
+      min-height: 300px; overflow: hidden;
+    }
+    .detail-image img { width: 100%; height: 100%; object-fit: cover; }
+
+    /* Unbox section */
+    .unbox { background: var(--black); color: var(--white); }
+    .unbox .detail-block { padding: 52px 24px; }
+    .unbox .detail-block__icon { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.6); }
+    .unbox .detail-block__desc { color: rgba(255,255,255,0.55); }
+
+    /* Specs table */
+    .specs-section { padding: 64px 24px; background: var(--gray-100); }
+    .specs-title { font-size: 22px; font-weight: 800; margin-bottom: 24px; }
+    .specs-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    .specs-table tr { border-bottom: 1px solid var(--gray-200); }
+    .specs-table tr:last-child { border-bottom: none; }
+    .specs-table td { padding: 14px 0; vertical-align: top; }
+    .specs-table td:first-child { color: var(--gray-600); width: 45%; }
+    .specs-table td:last-child  { font-weight: 600; }
+
+    /* Related */
+    .related { padding: 64px 24px; }
+    .related__title { font-size: 20px; font-weight: 800; margin-bottom: 24px; }
+
+    @media (min-width: 768px) {
+      .detail-section { grid-template-columns: 1fr 1fr; }
+      .detail-section--reverse .detail-image { order: -1; }
+      .detail-image { min-height: 400px; }
+      .detail-block { padding: 72px 56px; }
+      .specs-section { padding: 80px 40px; }
+      .related { padding: 80px 40px; }
+      .thumb-row { padding: 16px 0 0; }
+    }
+    @media (min-width: 1024px) {
+      .detail-block { padding: 80px 80px; }
+      .specs-section { padding: 100px 80px; }
+      .related { padding: 100px 80px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header" id="header">
+  <a href="index.html" class="header__logo">NOXALIVING</a>
+  <nav class="header__nav">
+    <a href="dispensador.html" class="header__nav-link active">Dispensador</a>
+    <a href="difusor.html"     class="header__nav-link">Difusor</a>
+    <a href="aceites.html"     class="header__nav-link">Aceites</a>
+    <a href="index.html#nosotros" class="header__nav-link">Nosotros</a>
+  </nav>
+  <div class="header__actions">
+    <button class="header__btn" aria-label="Buscar">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    </button>
+    <button class="header__btn" aria-label="Carrito">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+    </button>
+    <button class="header__btn header__menu-btn" id="menuBtn" aria-label="Menú">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+</header>
+
+<div class="menu-overlay" id="menuOverlay"></div>
+<aside class="menu-drawer" id="menuDrawer">
+  <div class="menu-drawer__header">
+    <span class="menu-drawer__brand">NOXALIVING</span>
+    <button class="menu-drawer__close" id="menuClose" aria-label="Cerrar">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+  </div>
+  <nav class="menu-drawer__nav">
+    <a href="dispensador.html" class="menu-drawer__link">Dispensador</a>
+    <a href="difusor.html"     class="menu-drawer__link">Difusor</a>
+    <a href="aceites.html"     class="menu-drawer__link">Aceites</a>
+    <a href="index.html#nosotros" class="menu-drawer__link">Nosotros</a>
+  </nav>
+  <div class="menu-drawer__footer">
+    <a href="#" class="menu-drawer__footer-link">Mi Cuenta</a>
+    <a href="#" class="menu-drawer__footer-link">Soporte</a>
+  </div>
+</aside>
+
+<div class="page">
+
+  <!-- BREADCRUMB -->
+  <nav class="breadcrumb">
+    <a href="index.html">Inicio</a>
+    <span class="breadcrumb__sep">›</span>
+    <span class="breadcrumb__current">Dispensador P25</span>
+  </nav>
+
+  <!-- PRODUCT HERO -->
+  <section class="product-hero" id="comprar">
+    <div class="product-hero__gallery">
+      <img id="mainImg" src="product-cutout.png" alt="Dispensador Automático P25 NOXALIVING">
+      <div class="thumb-row">
+        <div class="thumb active" onclick="setImg('product-cutout.png', this)">
+          <img src="product-cutout.png" alt="">
+        </div>
+        <div class="thumb" onclick="setImg('ChatGPT%20Image%205%20ago%202026%2C%2015_25_26.png', this)">
+          <img src="ChatGPT%20Image%205%20ago%202026%2C%2015_25_26.png" alt="">
+        </div>
+        <div class="thumb" onclick="setImg('product-unbox.jpeg', this)">
+          <img src="product-unbox.jpeg" alt="">
+        </div>
+      </div>
+    </div>
+    <div class="product-hero__info">
+      <span class="product-hero__tag">Dispensador · Nuevo Lanzamiento</span>
+      <h1 class="product-hero__name">Dispensador Automático P25</h1>
+      <p class="product-hero__desc">Sensor infrarrojo de alta precisión. Sin contacto, sin bacterias, sin desperdicio. Diseñado para baños y cocinas que merecen lo mejor.</p>
+
+      <div class="product-hero__price">
+        Próximamente <small>— Precio por confirmar</small>
+      </div>
+
+      <div class="product-hero__cta">
+        <a href="index.html#newsletter" class="btn btn--teal" style="flex:1;max-width:240px;">Notificarme</a>
+        <a href="index.html#newsletter" class="btn btn--outline-dark">Unirse a la lista</a>
+      </div>
+
+      <div class="product-hero__specs">
+        <div class="product-hero__spec-row">
+          <span class="product-hero__spec-label">Modelo</span>
+          <span class="product-hero__spec-value">P25</span>
+        </div>
+        <div class="product-hero__spec-row">
+          <span class="product-hero__spec-label">Material</span>
+          <span class="product-hero__spec-value">Acero Inoxidable 304</span>
+        </div>
+        <div class="product-hero__spec-row">
+          <span class="product-hero__spec-label">Sensor</span>
+          <span class="product-hero__spec-value">Infrarrojo touchless</span>
+        </div>
+        <div class="product-hero__spec-row">
+          <span class="product-hero__spec-label">Carga</span>
+          <span class="product-hero__spec-value">USB-C</span>
+        </div>
+        <div class="product-hero__spec-row">
+          <span class="product-hero__spec-label">Resistencia al agua</span>
+          <span class="product-hero__spec-value">IPX4</span>
+        </div>
+        <div class="product-hero__spec-row">
+          <span class="product-hero__spec-label">Indicador</span>
+          <span class="product-hero__spec-value">LED de nivel de carga</span>
+        </div>
+        <div class="product-hero__spec-row">
+          <span class="product-hero__spec-label">Contenido en caja</span>
+          <span class="product-hero__spec-value">Dispensador · Cable USB-C · Manual</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURE: SENSOR -->
+  <section class="detail-section">
+    <div class="detail-block">
+      <div class="detail-block__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 8h1a4 4 0 010 8h-1M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/></svg>
+      </div>
+      <h2 class="detail-block__title">Sensor que piensa por vos</h2>
+      <p class="detail-block__desc">El infrarrojo de alta precisión detecta tu mano en milisegundos y dispensa la cantidad exacta de jabón. Cada vez. Sin tocar nada.</p>
+    </div>
+    <div class="detail-image" style="background:#1a1a1a;">
+      <img src="product-solo.jpeg" alt="Sensor del dispensador P25" loading="lazy">
+    </div>
+  </section>
+
+  <!-- FEATURE: DISEÑO -->
+  <section class="detail-section detail-section--reverse" style="background:var(--gray-100);">
+    <div class="detail-block">
+      <div class="detail-block__icon" style="background:#e8e8e8;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+      </div>
+      <h2 class="detail-block__title">Acero inoxidable premium</h2>
+      <p class="detail-block__desc">El cuerpo del P25 está fabricado en acero inoxidable 304 cepillado. Resistente, duradero y elegante. Diseñado para durar años en tu baño o cocina.</p>
+    </div>
+    <div class="detail-image">
+      <img src="ChatGPT%20Image%205%20ago%202026%2C%2015_25_26.png" alt="Diseño acero inoxidable P25" loading="lazy">
+    </div>
+  </section>
+
+  <!-- FEATURE: UNBOXING -->
+  <section class="detail-section unbox">
+    <div class="detail-block">
+      <div class="detail-block__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 12V22H4V12"/><path d="M22 7H2v5h20V7z"/><path d="M12 22V7"/><path d="M12 7H7.5a2.5 2.5 0 010-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 000-5C13 2 12 7 12 7z"/></svg>
+      </div>
+      <h2 class="detail-block__title" style="color:var(--white)">Una experiencia desde el primer segundo</h2>
+      <p class="detail-block__desc">Empaque premium en caja negra con forro de espuma a medida. Cada P25 llega protegido y presentado como merece.</p>
+    </div>
+    <div class="detail-image">
+      <img src="product-unbox.jpeg" alt="Unboxing Dispensador P25 NOXALIVING" loading="lazy" style="opacity:0.85;">
+    </div>
+  </section>
+
+  <!-- SPECS TABLE -->
+  <div class="specs-section">
+    <h2 class="specs-title">Especificaciones</h2>
+    <table class="specs-table">
+      <tr><td>Modelo</td><td>NOXALIVING P25</td></tr>
+      <tr><td>Material</td><td>Acero Inoxidable 304 cepillado</td></tr>
+      <tr><td>Sensor</td><td>Infrarrojo touchless &lt; 6 cm</td></tr>
+      <tr><td>Carga</td><td>USB-C (cable incluido)</td></tr>
+      <tr><td>Batería</td><td>Larga duración · Indicador LED integrado</td></tr>
+      <tr><td>Resistencia al agua</td><td>IPX4 (salpicaduras)</td></tr>
+      <tr><td>Capacidad del depósito</td><td>250 ml</td></tr>
+      <tr><td>Compatible con</td><td>Jabón líquido · Gel antibacterial</td></tr>
+      <tr><td>Color</td><td>Plata cepillado</td></tr>
+      <tr><td>Garantía</td><td>Por confirmar</td></tr>
+    </table>
+  </div>
+
+  <!-- RELATED PRODUCTS -->
+  <div class="related">
+    <h2 class="related__title">Completá tu experiencia</h2>
+    <div class="products-grid">
+      <div class="product-card">
+        <div class="product-card__info">
+          <div class="product-card__name">Difusor Premium</div>
+          <div class="product-card__links">
+            <a href="difusor.html" class="product-card__link">Conocer</a>
+            <a href="difusor.html#comprar" class="product-card__link product-card__link--buy">Comprar</a>
+          </div>
+        </div>
+        <img class="product-card__img" src="ChatGPT%20Image%205%20ago%202026%2C%2015_20_55.png" alt="Difusor NOXALIVING">
+      </div>
+      <div class="product-card">
+        <div class="product-card__info">
+          <div class="product-card__name">Aceite Esencial Lavanda</div>
+          <div class="product-card__links">
+            <a href="aceites.html" class="product-card__link">Conocer</a>
+            <a href="aceites.html#comprar" class="product-card__link product-card__link--buy">Comprar</a>
+          </div>
+        </div>
+        <img class="product-card__img" src="ChatGPT%20Image%205%20ago%202026%2C%2015_31_03.png" alt="Aceite Esencial Lavanda">
+      </div>
+    </div>
+  </div>
+
+  <!-- NEWSLETTER -->
+  <section class="newsletter">
+    <h2 class="newsletter__title">Sé el primero<br>en recibirlo.</h2>
+    <p class="newsletter__sub">Avisanos tu correo y te notificamos cuando esté disponible.</p>
+    <form class="newsletter__form" id="nlForm">
+      <input class="newsletter__input" type="email" placeholder="Correo electrónico" required>
+      <input class="newsletter__input" type="tel" placeholder="WhatsApp (opcional)">
+      <button class="newsletter__submit" type="submit" id="nlBtn">Notificarme</button>
+    </form>
+    <p class="newsletter__legal">Al suscribirte aceptás recibir comunicaciones de NOXALIVING®.</p>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer__logo">NOXALIVING</div>
+    <div class="footer__social">
+      <a href="#" class="footer__social-link" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke-width="2"/></svg>
+      </a>
+      <a href="#" class="footer__social-link" aria-label="TikTok">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.7a8.27 8.27 0 004.84 1.55V6.81a4.85 4.85 0 01-1.07-.12z"/></svg>
+      </a>
+      <a href="#" class="footer__social-link" aria-label="WhatsApp">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      </a>
+    </div>
+    <div class="footer__cols">
+      <div>
+        <div class="footer__col-title">Soporte</div>
+        <ul class="footer__links">
+          <li><a href="#" class="footer__link">Mi Cuenta</a></li>
+          <li><a href="#" class="footer__link">Devoluciones</a></li>
+          <li><a href="#" class="footer__link">Contáctanos</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer__col-title">Empresa</div>
+        <ul class="footer__links">
+          <li><a href="index.html#nosotros" class="footer__link">Nosotros</a></li>
+          <li><a href="#" class="footer__link">Garantía</a></li>
+          <li><a href="#" class="footer__link">Privacidad</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer__col-title">Productos</div>
+        <ul class="footer__links">
+          <li><a href="dispensador.html" class="footer__link">Dispensador P25</a></li>
+          <li><a href="difusor.html"     class="footer__link">Difusor Premium</a></li>
+          <li><a href="aceites.html"     class="footer__link">Aceites Esenciales</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p class="footer__copy">© 2026 NOXALIVING®. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+  // Menu
+  const menuBtn = document.getElementById('menuBtn');
+  const menuClose = document.getElementById('menuClose');
+  const menuOverlay = document.getElementById('menuOverlay');
+  const menuDrawer = document.getElementById('menuDrawer');
+  menuBtn.addEventListener('click', () => { menuDrawer.classList.add('open'); menuOverlay.classList.add('open'); document.body.style.overflow = 'hidden'; });
+  [menuClose, menuOverlay].forEach(el => el.addEventListener('click', () => { menuDrawer.classList.remove('open'); menuOverlay.classList.remove('open'); document.body.style.overflow = ''; }));
+
+  // Header scroll
+  window.addEventListener('scroll', () => document.getElementById('header').classList.toggle('scrolled', window.scrollY > 8), { passive: true });
+
+  // Thumbnail gallery
+  function setImg(src, el) {
+    document.getElementById('mainImg').src = src;
+    document.querySelectorAll('.thumb').forEach(t => t.classList.remove('active'));
+    el.classList.add('active');
+  }
+
+  // Newsletter
+  document.getElementById('nlForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const btn = document.getElementById('nlBtn');
+    btn.textContent = '¡Listo! ✓'; btn.classList.add('done');
+    setTimeout(() => { btn.textContent = 'Notificarme'; btn.classList.remove('done'); this.reset(); }, 3500);
+  });
+</script>
+</body>
+</html>
