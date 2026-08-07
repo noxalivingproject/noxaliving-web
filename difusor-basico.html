@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Difusor Premium — NOXALIVING</title>
-  <meta name="description" content="Difusor de aromas ultrasónico premium. Diseño minimalista, luz ambiental cálida, silencioso. Compatible con cualquier aceite esencial NOXALIVING.">
+  <title>Difusor Básico 180 m² — NOXALIVING</title>
+  <meta name="description" content="Difusor de aromas ultrasónico básico. Cubre hasta 180 m², diseño Blanco Stone, silencioso. Compatible con fragancias NOXALIVING 120 ml.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <style>
-    /* ── DIFUSOR PAGE ── */
+    /* ── DIFUSOR BÁSICO PAGE ── */
     .product-hero__gallery { background: #f7f7f7; }
     .product-hero__gallery img { padding: 32px 20px; }
 
@@ -27,7 +27,6 @@
     .thumb.active { border-color: var(--teal); }
     .thumb img { width: 100%; height: 100%; object-fit: contain; padding: 4px; }
 
-    /* Hero dark version */
     .hero-banner {
       background: var(--black); min-height: 420px;
       display: flex; align-items: flex-end;
@@ -46,7 +45,6 @@
     .hero-banner__desc  { font-size: 15px; color: rgba(255,255,255,0.6); max-width: 400px; line-height: 1.6; margin-bottom: 24px; }
     .hero-banner__cta   { display: flex; gap: 12px; flex-wrap: wrap; }
 
-    /* Detail blocks */
     .detail-section { display: grid; grid-template-columns: 1fr; }
     .detail-block {
       padding: 52px 24px; display: flex; flex-direction: column; justify-content: center;
@@ -62,7 +60,6 @@
     .detail-image { min-height: 320px; overflow: hidden; }
     .detail-image img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
 
-    /* Specs */
     .specs-section { padding: 64px 24px; background: var(--gray-100); }
     .specs-title { font-size: 22px; font-weight: 800; margin-bottom: 24px; }
     .specs-table { width: 100%; border-collapse: collapse; font-size: 14px; }
@@ -71,6 +68,14 @@
     .specs-table td { padding: 14px 0; vertical-align: top; }
     .specs-table td:first-child { color: var(--gray-600); width: 45%; }
     .specs-table td:last-child  { font-weight: 600; }
+
+    .compare-banner {
+      background: var(--gray-100); padding: 40px 24px; text-align: center;
+      border-top: 1px solid var(--gray-200);
+    }
+    .compare-banner__title { font-size: 20px; font-weight: 800; margin-bottom: 8px; }
+    .compare-banner__desc  { font-size: 14px; color: var(--gray-600); margin-bottom: 20px; }
+    .compare-banner__cta   { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
 
     .related { padding: 64px 24px; }
     .related__title { font-size: 20px; font-weight: 800; margin-bottom: 24px; }
@@ -82,6 +87,7 @@
       .detail-block { padding: 72px 56px; }
       .specs-section { padding: 80px 40px; }
       .related { padding: 80px 40px; }
+      .compare-banner { padding: 60px 40px; }
       .hero-banner { min-height: 560px; }
       .hero-banner__content { padding: 60px 40px; }
     }
@@ -89,6 +95,7 @@
       .detail-block { padding: 80px 80px; }
       .specs-section { padding: 100px 80px; }
       .related { padding: 100px 80px; }
+      .compare-banner { padding: 80px 80px; }
       .hero-banner__content { padding: 80px 80px; }
     }
   </style>
@@ -100,8 +107,8 @@
   <a href="index.html" class="header__logo">NOXALIVING</a>
   <nav class="header__nav">
     <a href="dispensador.html"    class="header__nav-link">Dispensador</a>
-    <a href="difusor.html"        class="header__nav-link active">Difusor Premium</a>
-    <a href="difusor-basico.html" class="header__nav-link">Difusor Básico</a>
+    <a href="difusor.html"        class="header__nav-link">Difusor Premium</a>
+    <a href="difusor-basico.html" class="header__nav-link active">Difusor Básico</a>
     <a href="aceites.html"        class="header__nav-link">Fragancias</a>
     <a href="index.html#nosotros" class="header__nav-link">Nosotros</a>
   </nav>
@@ -145,13 +152,13 @@
   <nav class="breadcrumb">
     <a href="index.html">Inicio</a>
     <span class="breadcrumb__sep">›</span>
-    <span class="breadcrumb__current">Difusor Premium</span>
+    <span class="breadcrumb__current">Difusor Básico 180 m²</span>
   </nav>
 
   <!-- PRODUCT HERO -->
   <section class="product-hero" id="comprar">
     <div class="product-hero__gallery">
-      <img id="mainImg" src="ChatGPT%20Image%205%20ago%202026%2C%2015_15_31.png" alt="Difusor Premium NOXALIVING">
+      <img id="mainImg" src="ChatGPT%20Image%205%20ago%202026%2C%2015_15_31.png" alt="Difusor Básico NOXALIVING">
       <div class="thumb-row">
         <div class="thumb active" onclick="setImg('ChatGPT%20Image%205%20ago%202026%2C%2015_15_31.png', this)">
           <img src="ChatGPT%20Image%205%20ago%202026%2C%2015_15_31.png" alt="">
@@ -159,23 +166,20 @@
         <div class="thumb" onclick="setImg('ChatGPT%20Image%205%20ago%202026%2C%2015_20_55.png', this)">
           <img src="ChatGPT%20Image%205%20ago%202026%2C%2015_20_55.png" alt="">
         </div>
-        <div class="thumb" onclick="setImg('ChatGPT%20Image%204%20ago%202026%2C%2020_27_16.png', this)">
-          <img src="ChatGPT%20Image%204%20ago%202026%2C%2020_27_16.png" alt="">
-        </div>
       </div>
     </div>
     <div class="product-hero__info">
-      <span class="product-hero__tag">Difusor Premium · Metal · 300 m²</span>
-      <h1 class="product-hero__name">Difusor Premium 300 m²</h1>
-      <p class="product-hero__desc">Cuerpo en metal con acabado premium. Tecnología ultrasónica silenciosa, cubre hasta 300 m², luz ambiental LED teal y control desde la app. Para espacios grandes que merecen lo mejor.</p>
+      <span class="product-hero__tag">Difusor Básico · Plástico ABS · 180 m²</span>
+      <h1 class="product-hero__name">Difusor Básico 180 m²</h1>
+      <p class="product-hero__desc">La misma tecnología ultrasónica del Premium, en un formato accesible. Diseño Blanco Stone minimalista, silencioso, ideal para habitaciones y oficinas de hasta 180 m².</p>
 
       <div class="product-hero__price">
-        $420.000 <small>COP</small>
+        $210.000 <small>COP</small>
       </div>
 
       <div class="product-hero__cta">
         <a href="index.html#newsletter" class="btn btn--teal" style="flex:1;max-width:240px;">Comprar ahora</a>
-        <a href="difusor-basico.html" class="btn btn--outline-dark">Ver Básico $210.000</a>
+        <a href="difusor.html" class="btn btn--outline-dark">Ver Premium $420.000</a>
       </div>
 
       <div class="product-hero__specs">
@@ -184,28 +188,24 @@
           <span class="product-hero__spec-value">Ultrasónica</span>
         </div>
         <div class="product-hero__spec-row">
+          <span class="product-hero__spec-label">Material</span>
+          <span class="product-hero__spec-value">Plástico ABS premium</span>
+        </div>
+        <div class="product-hero__spec-row">
+          <span class="product-hero__spec-label">Cobertura</span>
+          <span class="product-hero__spec-value">180 m²</span>
+        </div>
+        <div class="product-hero__spec-row">
           <span class="product-hero__spec-label">Niveles de niebla</span>
           <span class="product-hero__spec-value">Alto / Bajo</span>
-        </div>
-        <div class="product-hero__spec-row">
-          <span class="product-hero__spec-label">Luz ambiental</span>
-          <span class="product-hero__spec-value">LED cálido regulable</span>
-        </div>
-        <div class="product-hero__spec-row">
-          <span class="product-hero__spec-label">Timer</span>
-          <span class="product-hero__spec-value">Programable</span>
         </div>
         <div class="product-hero__spec-row">
           <span class="product-hero__spec-label">Ruido</span>
           <span class="product-hero__spec-value">&lt; 35 dB (silencioso)</span>
         </div>
         <div class="product-hero__spec-row">
-          <span class="product-hero__spec-label">Material</span>
-          <span class="product-hero__spec-value">Metal premium</span>
-        </div>
-        <div class="product-hero__spec-row">
-          <span class="product-hero__spec-label">Cobertura</span>
-          <span class="product-hero__spec-value">300 m²</span>
+          <span class="product-hero__spec-label">Timer</span>
+          <span class="product-hero__spec-value">Programable</span>
         </div>
         <div class="product-hero__spec-row">
           <span class="product-hero__spec-label">Fragancia compatible</span>
@@ -219,11 +219,11 @@
   <section class="hero-banner">
     <video src="difusor%209.16.mp4" autoplay muted loop playsinline></video>
     <div class="hero-banner__content">
-      <h2 class="hero-banner__title">Respira<br>diferente.</h2>
-      <p class="hero-banner__desc">La tecnología ultrasónica convierte tus aceites esenciales en una niebla fría aromática que llena el ambiente en segundos.</p>
+      <h2 class="hero-banner__title">Aromas que<br>transforman.</h2>
+      <p class="hero-banner__desc">La tecnología ultrasónica convierte tus fragancias en una niebla fría aromática. Silencioso, simple y efectivo.</p>
       <div class="hero-banner__cta">
-        <a href="aceites.html" class="btn btn--white">Ver Aceites</a>
-        <a href="index.html#newsletter" class="btn btn--outline-white">Notificarme</a>
+        <a href="aceites.html" class="btn btn--white">Ver Fragancias</a>
+        <a href="index.html#newsletter" class="btn btn--outline-white">Comprar ahora</a>
       </div>
     </div>
   </section>
@@ -232,27 +232,27 @@
   <section class="detail-section">
     <div class="detail-block">
       <div class="detail-block__icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M8 12h8M12 8v8"/></svg>
       </div>
-      <h2 class="detail-block__title">Dos estilos, un mismo lujo</h2>
-      <p class="detail-block__desc">Disponible en Blanco Stone —textura premium inspirada en el mármol— y Negro mate con anillo LED teal. Elegí el que mejor combina con tu espacio.</p>
+      <h2 class="detail-block__title">Diseño Blanco Stone</h2>
+      <p class="detail-block__desc">Acabado mate suave inspirado en el mármol blanco. Se adapta a cualquier ambiente: dormitorio, sala, oficina o baño. Compacto y liviano, fácil de ubicar en cualquier espacio.</p>
     </div>
     <div class="detail-image" style="background:#f7f7f7;">
-      <img src="ChatGPT%20Image%205%20ago%202026%2C%2015_20_55.png" alt="Difusor Blanco Stone NOXALIVING" loading="lazy" style="object-fit:contain;padding:40px;">
+      <img src="ChatGPT%20Image%205%20ago%202026%2C%2015_20_55.png" alt="Difusor Básico Blanco Stone NOXALIVING" loading="lazy" style="object-fit:contain;padding:40px;">
     </div>
   </section>
 
-  <!-- FEATURE: SENSOR/LED -->
-  <section class="detail-section detail-section--reverse" style="background:var(--black);">
-    <div class="detail-block" style="background:var(--black);color:var(--white);">
-      <div class="detail-block__icon" style="background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.6);">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+  <!-- FEATURE: FRAGANCIA -->
+  <section class="detail-section detail-section--reverse" style="background:var(--gray-100);">
+    <div class="detail-block" style="background:var(--gray-100);">
+      <div class="detail-block__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2c-1.5 3-4 5-4 9a4 4 0 008 0c0-4-2.5-6-4-9z"/><path d="M12 15v7"/><path d="M9 19h6"/></svg>
       </div>
-      <h2 class="detail-block__title" style="color:var(--white);">Luz que crea ambiente</h2>
-      <p class="detail-block__desc" style="color:rgba(255,255,255,0.55);">El anillo LED teal del modelo negro genera una atmósfera única. El modelo blanco incluye luz ambiental cálida en la base. Regulables desde el panel táctil.</p>
+      <h2 class="detail-block__title">30 días de aroma continuo</h2>
+      <p class="detail-block__desc">Cada fragancia NOXALIVING de 120 ml dura 30 días en uso continuo — y mucho más si usás el timer programable. Elegí entre 5 fragancias premium para cambiar el ambiente cuando quieras.</p>
     </div>
-    <div class="detail-image" style="background:#111;">
-      <img src="ChatGPT%20Image%204%20ago%202026%2C%2020_27_16.png" alt="Difusor Negro NOXALIVING con LED teal" loading="lazy">
+    <div class="detail-image" style="background:#f0ece8;">
+      <img src="ChatGPT%20Image%205%20ago%202026%2C%2015_31_03.png" alt="Fragancias NOXALIVING 120ml" loading="lazy" style="object-fit:contain;padding:40px;">
     </div>
   </section>
 
@@ -262,26 +262,36 @@
       <div class="detail-block__icon">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
       </div>
-      <h2 class="detail-block__title">Silencio total, aromas totales</h2>
-      <p class="detail-block__desc">Con menos de 35 dB de operación, el difusor NOXALIVING es prácticamente inaudible. Perfecto para el dormitorio, la oficina o el living.</p>
+      <h2 class="detail-block__title">Menos de 35 dB</h2>
+      <p class="detail-block__desc">Prácticamente inaudible. Podés tenerlo encendido toda la noche en el dormitorio sin que moleste. Tecnología ultrasónica que trabaja en silencio mientras vos descansás.</p>
     </div>
     <div class="detail-image" style="background:#f0f0f0;">
-      <img src="ChatGPT%20Image%204%20ago%202026%2C%2020_37_56.png" alt="Difusor NOXALIVING en ambiente" loading="lazy">
+      <img src="ChatGPT%20Image%205%20ago%202026%2C%2015_15_31.png" alt="Difusor Básico NOXALIVING silencioso" loading="lazy" style="object-fit:contain;padding:40px;">
     </div>
   </section>
+
+  <!-- COMPARE BANNER -->
+  <div class="compare-banner">
+    <h2 class="compare-banner__title">¿Necesitás cubrir más espacio?</h2>
+    <p class="compare-banner__desc">El Difusor Premium cubre 300 m², tiene cuerpo de metal y control por app. Ideal para living, oficinas o espacios abiertos.</p>
+    <div class="compare-banner__cta">
+      <a href="difusor.html" class="btn btn--dark">Ver Difusor Premium $420.000</a>
+    </div>
+  </div>
 
   <!-- SPECS TABLE -->
   <div class="specs-section">
     <h2 class="specs-title">Especificaciones</h2>
     <table class="specs-table">
       <tr><td>Tecnología</td><td>Ultrasónica (niebla fría)</td></tr>
+      <tr><td>Material</td><td>Plástico ABS premium</td></tr>
       <tr><td>Niveles de niebla</td><td>2 niveles (alto / bajo)</td></tr>
-      <tr><td>Luz ambiental</td><td>LED regulable</td></tr>
+      <tr><td>Luz ambiental</td><td>LED cálido regulable</td></tr>
       <tr><td>Timer</td><td>Programable (1h / 3h / 6h / continuo)</td></tr>
       <tr><td>Nivel de ruido</td><td>&lt; 35 dB</td></tr>
-      <tr><td>Material</td><td>Metal premium</td></tr>
-      <tr><td>Cobertura</td><td>300 m²</td></tr>
+      <tr><td>Cobertura</td><td>180 m²</td></tr>
       <tr><td>Compatible con</td><td>Fragancias NOXALIVING 120 ml</td></tr>
+      <tr><td>Diseño</td><td>Blanco Stone</td></tr>
       <tr><td>Garantía</td><td>Por confirmar</td></tr>
     </table>
   </div>
@@ -292,17 +302,6 @@
     <div class="products-grid">
       <div class="product-card">
         <div class="product-card__info">
-          <div class="product-card__name">Difusor Básico 180 m²</div>
-          <div class="product-card__price" style="font-size:14px;color:#6b6b6b;margin-bottom:10px;">$210.000 COP</div>
-          <div class="product-card__links">
-            <a href="difusor-basico.html" class="product-card__link">Conocer</a>
-            <a href="difusor-basico.html#comprar" class="product-card__link product-card__link--buy">Comprar</a>
-          </div>
-        </div>
-        <img class="product-card__img" src="ChatGPT%20Image%205%20ago%202026%2C%2015_20_55.png" alt="Difusor Básico NOXALIVING">
-      </div>
-      <div class="product-card">
-        <div class="product-card__info">
           <div class="product-card__name">Fragancias 120 ml</div>
           <div class="product-card__price" style="font-size:14px;color:#6b6b6b;margin-bottom:10px;">Desde $70.000 COP</div>
           <div class="product-card__links">
@@ -311,6 +310,17 @@
           </div>
         </div>
         <img class="product-card__img" src="ChatGPT%20Image%205%20ago%202026%2C%2015_31_03.png" alt="Fragancias NOXALIVING">
+      </div>
+      <div class="product-card">
+        <div class="product-card__info">
+          <div class="product-card__name">Difusor Premium 300 m²</div>
+          <div class="product-card__price" style="font-size:14px;color:#6b6b6b;margin-bottom:10px;">$420.000 COP</div>
+          <div class="product-card__links">
+            <a href="difusor.html" class="product-card__link">Conocer</a>
+            <a href="difusor.html#comprar" class="product-card__link product-card__link--buy">Comprar</a>
+          </div>
+        </div>
+        <img class="product-card__img" src="ChatGPT%20Image%204%20ago%202026%2C%2020_27_16.png" alt="Difusor Premium NOXALIVING">
       </div>
     </div>
   </div>
@@ -355,9 +365,10 @@
       <div>
         <div class="footer__col-title">Productos</div>
         <ul class="footer__links">
-          <li><a href="dispensador.html" class="footer__link">Dispensador P25</a></li>
-          <li><a href="difusor.html"     class="footer__link">Difusor Premium</a></li>
-          <li><a href="aceites.html"     class="footer__link">Aceites Esenciales</a></li>
+          <li><a href="dispensador.html"    class="footer__link">Dispensador P25</a></li>
+          <li><a href="difusor.html"        class="footer__link">Difusor Premium</a></li>
+          <li><a href="difusor-basico.html" class="footer__link">Difusor Básico</a></li>
+          <li><a href="aceites.html"        class="footer__link">Fragancias</a></li>
         </ul>
       </div>
     </div>
