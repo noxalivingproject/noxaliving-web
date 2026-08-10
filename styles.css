@@ -197,6 +197,12 @@ ul   { list-style: none; }
   object-position: center; display: block;
 }
 
+/* Video split: 9:16 portrait on mobile, fills container on desktop */
+.split--video .split__media {
+  min-height: unset;
+  aspect-ratio: 9 / 16;
+}
+
 .split__content {
   padding: 48px 24px;
   display: flex; flex-direction: column; justify-content: center;
@@ -391,6 +397,7 @@ ul   { list-style: none; }
   .split--reverse { flex-direction: row-reverse; }
   .split__media { flex: 1; min-height: unset; }
   .split__content { flex: 1; padding: 60px 56px; }
+  .split--video .split__media { aspect-ratio: unset; }
 
   .trust-grid    { grid-template-columns: repeat(4,1fr); }
   .features-grid { grid-template-columns: repeat(4,1fr); }
