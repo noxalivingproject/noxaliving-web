@@ -49,7 +49,6 @@ ul   { list-style: none; }
 }
 .header__logo-img {
   height: 38px; width: auto; display: block;
-  mix-blend-mode: screen;
 }
 
 .header__nav { display: none; gap: 28px; }
