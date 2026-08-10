@@ -320,11 +320,11 @@ ul   { list-style: none; }
 .product-hero__gallery {
   background: var(--gray-100); overflow: hidden;
   min-height: 380px; position: relative;
-  display: flex; align-items: center; justify-content: center;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
 }
-.product-hero__gallery img {
-  width: 100%; max-height: 480px; object-fit: contain;
-  padding: 40px 24px;
+.product-hero__gallery > img {
+  flex: 1; width: 100%; max-height: 460px; object-fit: contain;
+  padding: 40px 24px 16px;
 }
 
 .product-hero__info { padding: 40px 24px; }
