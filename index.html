@@ -43,11 +43,14 @@
       margin-bottom: 40px; position: relative;
     }
     .hero__image {
-      width: min(320px, 78vw);
-      height: auto; aspect-ratio: 9/16;
-      object-fit: cover; border-radius: 16px;
+      width: min(320px, 74vw); object-fit: contain;
       display: block; margin: 0 auto;
-      box-shadow: 0 0 60px rgba(0,180,216,0.18);
+      filter: drop-shadow(0 -8px 40px rgba(0,180,216,0.22));
+      animation: float 5s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%,100% { transform: translateY(0); }
+      50%      { transform: translateY(-14px); }
     }
 
     /* Desktop: split layout */
@@ -63,15 +66,14 @@
       .hero__content { flex: 0 0 44%; padding-right: 40px; }
       .hero__actions { justify-content: flex-start; margin-bottom: 0; }
       .hero__image {
-        flex: 0 0 46%; width: 100%; max-width: 420px;
-        margin: 0; align-self: center;
-        aspect-ratio: 9/16;
+        flex: 0 0 56%; width: 100%; max-width: 560px;
+        margin: 0; align-self: flex-end;
       }
     }
     @media (min-width: 1100px) {
       .hero { padding: 0 80px; }
       .hero__content { flex-basis: 42%; }
-      .hero__image { flex-basis: 44%; max-width: 460px; }
+      .hero__image { flex-basis: 58%; max-width: 640px; }
     }
 
     .hero__scroll {
@@ -189,7 +191,7 @@
         <a href="#productos"       class="btn btn--outline-white">Ver todo</a>
       </div>
     </div>
-    <video class="hero__image" src="VIDEO1.mp4" autoplay muted loop playsinline></video>
+    <img class="hero__image" src="product-cutout.png" alt="NOXALIVING Dispensador Automático P25" loading="eager">
     <div class="hero__scroll" aria-hidden="true">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
       Explorar
@@ -259,7 +261,7 @@
   <!-- SPLIT: DISPENSADOR -->
   <section class="split">
     <div class="split__media">
-      <img src="product-solo.jpeg" alt="Dispensador P25 NOXALIVING" loading="lazy">
+      <video src="VIDEO1.mp4" autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover;display:block;"></video>
     </div>
     <div class="split__content">
       <span class="split__badge">Nuevo Lanzamiento</span>
