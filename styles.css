@@ -48,7 +48,8 @@ ul   { list-style: none; }
   display: flex; align-items: center; flex-shrink: 0;
 }
 .header__logo-img {
-  height: 28px; width: auto; display: block;
+  height: 38px; width: auto; display: block;
+  mix-blend-mode: screen;
 }
 
 .header__nav { display: none; gap: 28px; }
