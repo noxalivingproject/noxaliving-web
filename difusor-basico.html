@@ -113,6 +113,16 @@
     <a href="index.html#nosotros" class="header__nav-link">Nosotros</a>
   </nav>
   <div class="header__actions">
+    <div class="country-wrap">
+      <button class="header__btn country-btn" id="countryBtn" aria-label="País">
+        <span class="country-btn__flag" id="countryFlag">🌐</span>
+        <span class="country-btn__code" id="countryCode"></span>
+      </button>
+      <div class="country-drop" id="countryDrop">
+        <div class="country-drop__head">Seleccioná tu país</div>
+        <div class="country-drop__list" id="countryList"></div>
+      </div>
+    </div>
     <button class="header__btn" aria-label="Buscar">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
     </button>
@@ -399,5 +409,6 @@
     setTimeout(() => { btn.textContent = 'Notificarme'; btn.classList.remove('done'); this.reset(); }, 3500);
   });
 </script>
+<script src="country.js" defer></script>
 </body>
 </html>
