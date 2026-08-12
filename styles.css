@@ -447,6 +447,13 @@ ul   { list-style: none; }
 }
 .gallery-strip__item img { width: 100%; height: 100%; object-fit: cover; }
 
+/* ===== MOBILE FIXES ===== */
+@media (max-width: 767px) {
+  .header__logo-img { height: 36px; }   /* logo más compacto en móvil */
+  .country-btn__code { display: none; } /* solo bandera, sin código "CO" */
+  .country-btn { padding: 0 6px !important; } /* botón más estrecho */
+}
+
 /* ===== DESKTOP BREAKPOINTS ===== */
 @media (min-width: 768px) {
   :root { --header-h: 64px; }
