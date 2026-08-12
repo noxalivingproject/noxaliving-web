@@ -171,7 +171,7 @@
   <!-- HERO -->
   <section class="hero">
     <!-- Video de fondo -->
-    <video class="hero__bg" autoplay muted loop playsinline preload="auto">
+    <video class="hero__bg" id="heroBg" autoplay muted loop playsinline webkit-playsinline x5-playsinline preload="auto">
       <source src="VIDEO%20HERO%20NOXA%20LIVING.mp4" type="video/mp4">
     </video>
     <!-- Overlay degradado -->
@@ -440,6 +440,41 @@
     btn.classList.add('done');
     setTimeout(() => { btn.textContent = 'Suscribirse'; btn.classList.remove('done'); this.reset(); }, 3500);
   });
+</script>
+
+<script>
+  /* ── Forzar reproducción del video hero en móvil ── */
+  (function () {
+    var v = document.getElementById('heroBg');
+    if (!v) return;
+
+    function tryPlay() {
+      var p = v.play();
+      if (p !== undefined) {
+        p.catch(function () {
+          // Si falla (política del navegador), intentar al primer toque
+          document.addEventListener('touchstart', function handler() {
+            v.play();
+            document.removeEventListener('touchstart', handler);
+          });
+        });
+      }
+    }
+
+    if (document.readyState === 'complete' || document.readyState === 'interactive') {
+      tryPlay();
+    } else {
+      document.addEventListener('DOMContentLoaded', tryPlay);
+    }
+
+    // iOS a veces necesita que el video esté visible antes de reproducir
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (entries) {
+        if (entries[0].isIntersecting) { v.play(); }
+      }, { threshold: 0.1 });
+      io.observe(v);
+    }
+  })();
 </script>
 </body>
 </html>
