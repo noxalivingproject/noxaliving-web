@@ -103,16 +103,6 @@
     <a href="index.html#nosotros" class="header__nav-link">Nosotros</a>
   </nav>
   <div class="header__actions">
-    <div class="country-wrap">
-      <button class="header__btn country-btn" id="countryBtn" aria-label="País">
-        <span class="country-btn__flag" id="countryFlag">🌐</span>
-        <span class="country-btn__code" id="countryCode"></span>
-      </button>
-      <div class="country-drop" id="countryDrop">
-        <div class="country-drop__head">Seleccioná tu país</div>
-        <div class="country-drop__list" id="countryList"></div>
-      </div>
-    </div>
     <button class="header__btn" aria-label="Buscar">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
     </button>
@@ -354,6 +344,20 @@
           <li><a href="difusor.html"     class="footer__link">Difusor Premium</a></li>
           <li><a href="aceites.html"     class="footer__link">Aceites Esenciales</a></li>
         </ul>
+      </div>
+      <div>
+        <div class="footer__col-title">País</div>
+        <div class="country-wrap country-wrap--footer">
+          <button class="country-btn--footer" id="countryBtn" aria-label="País">
+            <span id="countryFlag">🌐</span>
+            <span id="countryCode">--</span>
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>
+          </button>
+          <div class="country-drop country-drop--up" id="countryDrop">
+            <div class="country-drop__head">Seleccioná tu país</div>
+            <div class="country-drop__list" id="countryList"></div>
+          </div>
+        </div>
       </div>
     </div>
     <div class="footer__bottom">
