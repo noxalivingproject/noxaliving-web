@@ -15,6 +15,37 @@
   <style>
     /* ── HOME ONLY ── */
 
+    /* BANNER DESLIZANTE */
+    .banner-slider {
+      position: relative; overflow: hidden;
+      width: 100%; height: 62svh;
+    }
+    .banner-slider__track {
+      display: flex; height: 100%;
+      transition: transform 0.75s cubic-bezier(0.4,0,0.2,1);
+    }
+    .banner-slider__slide {
+      min-width: 100%; height: 100%; position: relative; flex-shrink: 0;
+    }
+    .banner-slider__slide img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center; display: block;
+    }
+    .banner-slider__dots {
+      position: absolute; bottom: 18px; left: 50%;
+      transform: translateX(-50%); display: flex; gap: 8px; z-index: 2;
+    }
+    .banner-slider__dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: rgba(255,255,255,0.45); border: none; cursor: pointer;
+      transition: background 0.3s, transform 0.3s;
+    }
+    .banner-slider__dot.active { background: #fff; transform: scale(1.35); }
+
+    @media (min-width: 768px) {
+      .banner-slider { height: 78vh; }
+    }
+
     /* HERO */
     .hero {
       min-height: 100svh;
@@ -305,6 +336,22 @@
     </div>
   </section>
 
+  <!-- BANNER DESLIZANTE -->
+  <section class="banner-slider" aria-label="Galería NOXALIVING">
+    <div class="banner-slider__track" id="sliderTrack">
+      <div class="banner-slider__slide">
+        <img src="DESLIZANTES%201.png" alt="NOXALIVING — Difusores de Aromas" loading="lazy">
+      </div>
+      <div class="banner-slider__slide">
+        <img src="DESLIZANTES%202.png" alt="NOXALIVING — Fragancias" loading="lazy">
+      </div>
+    </div>
+    <div class="banner-slider__dots" id="sliderDots">
+      <button class="banner-slider__dot active" data-idx="0" aria-label="Imagen 1"></button>
+      <button class="banner-slider__dot"        data-idx="1" aria-label="Imagen 2"></button>
+    </div>
+  </section>
+
   <!-- TRUST STRIP -->
   <section class="section section--gray">
     <div class="section__header section__header--center">
@@ -460,6 +507,26 @@
 <script src="country.js" defer></script>
 
 <script>
+  /* ── Banner deslizante ── */
+  (function () {
+    var track = document.getElementById('sliderTrack');
+    var dots  = document.querySelectorAll('.banner-slider__dot');
+    var current = 0;
+    var total   = 2;
+
+    function goTo(idx) {
+      current = idx;
+      track.style.transform = 'translateX(-' + (idx * 100) + '%)';
+      dots.forEach(function (d, i) { d.classList.toggle('active', i === idx); });
+    }
+
+    dots.forEach(function (d) {
+      d.addEventListener('click', function () { goTo(+d.dataset.idx); });
+    });
+
+    setInterval(function () { goTo((current + 1) % total); }, 4500);
+  })();
+
   /* ── Forzar reproducción del video hero en móvil ── */
   (function () {
     var v = document.getElementById('heroBg');
