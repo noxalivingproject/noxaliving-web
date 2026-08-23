@@ -52,6 +52,44 @@
     }
     .banner-slider__dot.active { background: #fff; transform: scale(1.35); }
 
+    /* BANNER SLIDE TEXT OVERLAY */
+    .banner-slider__slide {
+      position: relative;
+    }
+    .banner-slider__text-overlay {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 32px 28px 48px;
+      background: linear-gradient(to top, rgba(0,0,0,0.68) 0%, rgba(0,0,0,0.28) 60%, transparent 100%);
+      z-index: 2;
+    }
+    .banner-slider__slide-title {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(18px, 5vw, 38px);
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      line-height: 1.15;
+      margin-bottom: 8px;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.35);
+    }
+    .banner-slider__slide-body {
+      font-size: clamp(12px, 2.2vw, 16px);
+      color: rgba(255,255,255,0.88);
+      font-weight: 300;
+      letter-spacing: 0.02em;
+      max-width: 520px;
+      line-height: 1.5;
+      text-shadow: 0 1px 6px rgba(0,0,0,0.4);
+    }
+    @media (min-width: 768px) {
+      .banner-slider__text-overlay {
+        padding: 48px 64px 56px;
+        max-width: 600px;
+      }
+    }
+
     /* HERO */
     .hero {
       min-height: 100svh;
@@ -350,12 +388,20 @@
           <source media="(max-width: 767px)" srcset="DESLIZANTES%20VERSION%20MOVIL.png">
           <img src="DESLIZANTES%201.png" alt="NOXALIVING — Difusores de Aromas" loading="lazy">
         </picture>
+        <div class="banner-slider__text-overlay">
+          <p class="banner-slider__slide-title">TU HOGAR, TU AROMA.</p>
+          <p class="banner-slider__slide-body">Tecnología ultrasónica que transforma cada espacio en una experiencia sensorial única.</p>
+        </div>
       </div>
       <div class="banner-slider__slide">
         <picture>
           <source media="(max-width: 767px)" srcset="DESLIZANTE%20VERSION%20MOVIL%202.png">
           <img src="DESLIZANTES%202.png" alt="NOXALIVING — Fragancias" loading="lazy">
         </picture>
+        <div class="banner-slider__text-overlay">
+          <p class="banner-slider__slide-title">EL AMBIENTE LO CAMBIA TODO.</p>
+          <p class="banner-slider__slide-body">Aromas exclusivos diseñados para elevar tu bienestar día a día.</p>
+        </div>
       </div>
     </div>
     <div class="banner-slider__dots" id="sliderDots">
